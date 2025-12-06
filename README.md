@@ -20,37 +20,6 @@ The model is trained using a custom multi-appliance dataset, and deployed for re
 
 ✔ Includes credits to the original MATNILM repository
 
-📁 Project Structure
-NILM-Disaggregation-Project/
-│
-├── README.md
-│
-├── dataset/                  
-│   ├── my_dataset.csv
-│   ├── data_description.md
-│   └── raw/ , processed/ (optional)
-│
-├── notebooks/
-│   ├── training_notebook.ipynb       # Modified MATNILM training code
-│   ├── realtime_blynk.ipynb          # Google Sheet → Prediction → Blynk
-│   └── model_architecture_notes.md
-│
-├── models/
-│   ├── trained_model.h5
-│   └── scaler.pkl
-│
-├── deployment/
-│   ├── google_sheet_script.txt       # Example Google Script
-│   ├── blynk_api_usage.md
-│   └── requirements.txt
-│
-├── images/
-│   ├── workflow_diagram.png
-│   ├── training_loss_plot.png
-│   ├── prediction_example.png
-│   └── blynk_screenshot.png
-│
-└── CITATION.md / LICENSE
 
 🔧 Technologies Used
 
@@ -70,7 +39,7 @@ Blynk IoT Platform
 
 📊 Dataset
 
-Your dataset includes:
+Dataset includes:
 
 Date
 
@@ -82,14 +51,11 @@ Total Current (A)
 
 Individual appliance power (M1, M2, M3, M4)
 
-A detailed explanation is included in:
-dataset/data_description.md
-
 🧠 Model Training
 
 The MATNILM model was adapted for this dataset.
 Training steps are available in:
-notebooks/training_notebook.ipynb
+notebook folder
 
 ✔ Preprocessing
 ✔ Normalization
@@ -112,14 +78,6 @@ Predicted appliance power
 Sent to Blynk (Virtual Pins)
 
 
-Relevant files:
-
-deployment/google_sheet_script.txt
-
-deployment/blynk_api_usage.md
-
-notebooks/realtime_blynk.ipynb
-
 🙏 Credits
 
 This project uses and extends the MATNILM model from the following repository:
@@ -129,11 +87,8 @@ GitHub: https://github.com/jxiong22/MATNilm
 
 I have modified the code to match my dataset and deployment pipeline.
 
-📜 License
-
-If required, add a LICENSE file such as MIT or Apache-2.0.
 
 ✉️ Contact
 
 If you want to discuss this project or collaborate:
-Your Name — your email here
+Md Istiauk Hossain Rifat — istiaukhossain@gmail.com
