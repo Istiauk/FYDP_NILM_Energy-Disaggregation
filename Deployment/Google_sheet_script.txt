@@ -1,0 +1,37 @@
+function onChange(e) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var lastRow = sheet.getLastRow();
+
+  //var dateCell = sheet.getRange(lastRow, 9); // Column I (index 9)
+  //var timeCell = sheet.getRange(lastRow, 10); // Column J (index 10)
+
+  var dateCell = sheet.getRange(lastRow, 13); // Column I (index 9)
+  var timeCell = sheet.getRange(lastRow, 14); // Column J (index 10)
+
+  // If column I (date) is empty in the last row, assume it's a new row
+  if (!dateCell.getValue()) {
+    var now = new Date();
+    var dateOnly = Utilities.formatDate(now, Session.getScriptTimeZone(), "yyyy-MM-dd");
+    var timeOnly = Utilities.formatDate(now, Session.getScriptTimeZone(), "HH:mm:ss");
+
+    dateCell.setValue(dateOnly);
+    timeCell.setValue(timeOnly);
+
+    // Send values from columns A to H (1 to 8) to Blynk Virtual Pins V0 to V7
+    //var rowData = sheet.getRange(lastRow, 2, 1, 7).getValues()[0];
+    var rowData = sheet.getRange(lastRow, 2, 1, 11).getValues()[0];
+    var authToken = "EaTZFy2Sw937_GGKcGMD-8f9WdjvIgGC"; // Replace this with your actual Blynk token
+    var baseUrl = "https://blynk.cloud/external/api/update";
+
+    for (var i = 0; i < rowData.length; i++) {
+    var value = parseFloat(rowData[i]);
+  
+    if (isNaN(value)) continue; // Skip non-numeric values
+
+    var virtualPin = "V" + i;
+    var url = baseUrl + "?token=" + authToken + "&" + virtualPin + "=" + encodeURIComponent(value);
+
+    UrlFetchApp.fetch(url);
+    }
+  }
+}
